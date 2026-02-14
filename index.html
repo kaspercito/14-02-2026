@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para [Su Nombre] - Feliz San Valentín</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <style>
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background: linear-gradient(135deg, #ff8a8a, #ff5e98);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Parisienne', cursive;
+            font-size: 5.5rem;
+            margin: 60px 0 20px;
+            animation: fadeIn 2s ease-in;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin: 80px 0 30px;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+        .heart-beat {
+            font-size: 4rem;
+            animation: beat 1.5s infinite;
+        }
+        .section {
+            margin: 120px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+        button {
+            background: white;
+            color: #ff5e98;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 30px 10px;
+            transition: transform 0.3s;
+        }
+        button:hover { transform: scale(1.1); }
+
+        /* Corazones cayendo */
+        .falling-hearts span {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    </style>
+</head>
+<body>
+
+    <!-- Corazones cayendo -->
+    <div class="falling-hearts">
+        <span style="left: 10%; animation-duration: 12s; animation-delay: 0s;">❤️</span>
+        <span style="left: 20%; animation-duration: 15s; animation-delay: 2s;">💕</span>
+        <span style="left: 30%; animation-duration: 10s; animation-delay: 1s;">❤️</span>
+        <span style="left: 40%; animation-duration: 14s; animation-delay: 5s;">💖</span>
+        <span style="left: 50%; animation-duration: 11s; animation-delay: 3s;">❤️</span>
+        <span style="left: 60%; animation-duration: 13s; animation-delay: 4s;">💕</span>
+        <span style="left: 70%; animation-duration: 16s; animation-delay: 6s;">💖</span>
+        <span style="left: 80%; animation-duration: 12s; animation-delay: 7s;">❤️</span>
+        <span style="left: 90%; animation-duration: 14s; animation-delay: 8s;">💕</span>
+    </div>
+
+    <div class="container">
+        <h1>Feliz Día de San Valentín, [Su Nombre]</h1>
+        <p class="heart-beat">❤️</p>
+        <p>De parte de [Tu Nombre]</p>
+
+        <div class="section">
+            <h2>Un mensaje para ti</h2>
+            <p>Aquí escribe tu mensaje principal. Sé sincero: dile lo que sientes, por qué te importa tanto, si quieres disculparte por algo, y que respetarás lo que ella decida.</p>
+        </div>
+
+        <div class="section">
+            <h2>Nuestros mejores recuerdos</h2>
+            <p>Agrega las fotos que más te gusten de momentos juntos.</p>
+            <img src="https://via.placeholder.com/600x400?text=Foto+1" alt="Recuerdo 1">
+            <img src="https://via.placeholder.com/600x400?text=Foto+2" alt="Recuerdo 2">
+            <!-- Agrega más imágenes cambiando el src -->
+        </div>
+
+        <div class="section">
+            <h2>Por qué eres tan especial para mí</h2>
+            <ul style="list-style: none; padding: 0; font-size: 1.4rem;">
+                <li>💕 Tu sonrisa ilumina todo</li>
+                <li>💕 [Razones personales tuyas]</li>
+                <li>💕 [Otra razón]</li>
+                <!-- Agrega todas las que quieras -->
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>¡Haz clic y celebra!</h2>
+            <button onclick="confetti({particleCount: 150, spread: 100, origin: { y: 0.6 }, colors: ['#ff69b4','#ff1493','#ffffff']});">
+                Lanza confeti 🎉
+            </button>
+            <button onclick="confetti({particleCount: 80, scalar: 2, shapes: ['heart'], colors: ['#ff1493','#ff69b4']});">
+                Solo corazones ❤️
+            </button>
+        </div>
+
+        <div class="section">
+            <h2>Con todo mi cariño</h2>
+            <p>Espero que esto te saque una sonrisa y que podamos hablar cuando tú quieras. Te extraño.</p>
+            <p style="font-size: 1.8rem; margin-top: 50px;">Con amor,<br>[Tu Nombre]</p>
+        </div>
+    </div>
+
+    <script>
+        // Animaciones al hacer scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(sec => observer.observe(sec));
+    </script>
+</body>
+</html>
