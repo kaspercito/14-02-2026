@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 
 body{
-background:linear-gradient(180deg,#ff4d6d,#0b0b0b);
+background:radial-gradient(circle at top,#ff5c8a,#070707);
 color:white;
 overflow-x:hidden;
 }
@@ -22,12 +22,21 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:25px;
+padding:30px;
 text-align:center;
 }
 
-h1{font-size:2.2rem;margin-bottom:10px}
-p{max-width:500px;opacity:.9}
+h1{font-size:2.3rem;margin-bottom:10px}
+p{max-width:600px;line-height:1.6;opacity:.9}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,0,100,.4);
+margin-top:20px;
+}
 
 .btn{
 background:#ff4d6d;
@@ -35,55 +44,33 @@ border:none;
 border-radius:30px;
 padding:12px 25px;
 color:white;
-margin-top:20px;
+margin-top:25px;
 font-size:1rem;
-}
-
-.card{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,0,80,.5);
-margin-top:20px;
 }
 
 .heart{
 position:fixed;
 bottom:-20px;
-animation:float 6s linear infinite;
+animation:float 7s linear infinite;
 }
 
 @keyframes float{
 0%{transform:translateY(0);opacity:1}
-100%{transform:translateY(-100vh);opacity:0}
+100%{transform:translateY(-120vh);opacity:0}
 }
 
-.chat{
-margin-top:20px;
-text-align:left;
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:1s;
 }
 
-.msg{
-background:#ff4d6d;
-padding:10px 15px;
-border-radius:15px;
-margin:10px 0;
-width:80%;
+.show{
+opacity:1;
+transform:none;
 }
 
-.reply{
-background:#333;
-margin-left:auto;
-}
-
-input{
-width:100%;
-padding:10px;
-border-radius:20px;
-border:none;
-margin-top:10px;
-}
+.counter{margin-top:15px;font-size:1.1rem}
 
 footer{opacity:.4;margin-top:40px}
 </style>
@@ -92,97 +79,102 @@ footer{opacity:.4;margin-top:40px}
 <body>
 
 <section>
-<h1>Hola ❤️</h1>
-<p>No sé si estabas esperando esto…  
-pero yo necesitaba hacerlo.</p>
-<button class="btn" onclick="next()">Siguiente</button>
-</section>
-
-<section>
-<div class="card">
-<h1>Desde Argentina hasta Ecuador</h1>
-
-<p>
-No importa la distancia…  
-importa lo que siento.
-
-Tal vez últimamente te alejaste,  
-pero yo aún pienso en ti.
+<h1>Hola… ❤️</h1>
+<p class="fade">
+Tal vez no estabas esperando esto.  
+Pero yo necesitaba decirte lo que siento.
 </p>
 
-<div id="timer"></div>
-</div>
-
-<button class="btn" onclick="next()">Sigue</button>
+<button class="btn" onclick="next()">seguir</button>
 </section>
 
 <section>
-<div class="card">
-<h1>Una carta para ti 💌</h1>
+<div class="card fade">
+<h1>Desde lejos…</h1>
 
 <p>
-No quiero presionarte.  
-Solo quiero que sepas que me importas muchísimo.
+No importa que estemos en países distintos.  
+Hay personas que se sienten cerca incluso desde lejos.
 
-Si hoy estás cansada, triste o confundida…  
-aquí estoy.
+Tú eres una de ellas.
+</p>
+
+<div id="timer" class="counter"></div>
+</div>
+
+<button class="btn" onclick="next()">continúa</button>
+</section>
+
+<section>
+<div class="card fade">
+<h1>Una carta</h1>
+
+<p>
+No sé en qué momento empezaste a alejarte…  
+solo sé que desde que llegaste a mi vida algo cambió en mí.
+
+No quiero presionarte.  
+No quiero incomodarte.  
+Solo quiero que sepas que me importas de verdad.
+
+A veces me quedo pensando en ti,  
+en cómo estás,  
+si comiste,  
+si sonreíste hoy.
+
+Tal vez no soy perfecto.  
+Tal vez me equivoco.  
+Pero lo que siento es sincero.
+</p>
+</div>
+
+<button class="btn" onclick="next()">leer más</button>
+</section>
+
+<section>
+<div class="card fade">
+<h1>Si hoy estás cansada…</h1>
+
+<p>
+Si hoy estás triste, aquí estoy.  
+Si hoy estás confundida, aquí estoy.  
+Si hoy solo necesitas silencio, también lo entiendo.
+
+No te escribo esperando algo.  
+Te escribo porque eres importante para mí.
 </p>
 
 <p style="margin-top:15px">
-No te escribo para obligarte a volver.  
-Te escribo porque es real.
+A veces amar también es respetar el espacio.
 </p>
 </div>
 
-<button class="btn" onclick="next()">Abrir chat</button>
+<button class="btn" onclick="next()">sigue</button>
 </section>
 
 <section>
-<h1>Mini chat 💬</h1>
-
-<div class="chat" id="chat">
-<div class="msg">Hola… solo quería saber cómo estás ❤️</div>
-</div>
-
-<input placeholder="Escribe algo..." onkeydown="send(event)">
-
-<button class="btn" onclick="next()">Continuar</button>
-</section>
-
-<section>
-<div class="card">
-<h1>Elige una opción</h1>
-
-<button class="btn" onclick="answer(1)">Me caes bien</button><br>
-<button class="btn" onclick="answer(2)">Necesito tiempo</button><br>
-<button class="btn" onclick="answer(3)">También pienso en ti</button>
-
-<p id="resp" style="margin-top:20px"></p>
-</div>
-
-<button class="btn" onclick="next()">Final</button>
-</section>
-
-<section>
-<div class="card">
-<h1>Solo una cosa más…</h1>
+<div class="card fade">
+<h1>Solo quería decirte</h1>
 
 <p>
 Gracias por existir.  
-Gracias por leer hasta aquí.
+Gracias por haber llegado a mi vida.
 
-No importa qué pase…  
-siempre te voy a desear lo mejor.
+Pase lo que pase,  
+siempre te voy a desear paz, felicidad  
+y muchas sonrisas.
 
 Feliz 14 de Febrero ❤️
 </p>
 
-<footer>Hecho con el corazón — Miguel</footer>
+<footer>
+Hecho con el corazón — Miguel
+</footer>
 </div>
 </section>
 
 <audio autoplay loop>
-<source src="https://cdn.pixabay.com/audio/2022/10/05/audio_42e9c0b9a2.mp3">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2f6303bcd1.mp3">
 </audio>
 
 <script>
@@ -195,8 +187,9 @@ let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="❤️";
 h.style.left=Math.random()*100+"vw";
+h.style.fontSize=Math.random()*20+10+"px";
 document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
+setTimeout(()=>h.remove(),7000);
 },300);
 
 const start=new Date("2026-02-01");
@@ -206,20 +199,13 @@ let d=Math.floor((new Date()-start)/86400000);
 document.getElementById("timer").innerHTML="Días pensando en ti: "+d;
 },1000);
 
-function send(e){
-if(e.key==="Enter"){
-let c=document.getElementById("chat");
-c.innerHTML+=`<div class="msg reply">${e.target.value}</div>`;
-e.target.value="";
-}
-}
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add("show");
+});
+});
 
-function answer(n){
-let t=document.getElementById("resp");
-if(n==1)t.innerHTML="Eso ya significa mucho para mí ❤️";
-if(n==2)t.innerHTML="Te entiendo… aquí estaré.";
-if(n==3)t.innerHTML="Eso me hace sonreír.";
-}
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 </script>
 
 </body>
