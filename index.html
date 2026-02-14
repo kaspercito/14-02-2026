@@ -1,159 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para [Su Nombre] - Feliz San Valentín</title>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%;
-            background: linear-gradient(135deg, #ff8a8a, #ff5e98);
-            font-family: 'Montserrat', sans-serif;
-            color: white;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        h1 {
-            font-family: 'Parisienne', cursive;
-            font-size: 5.5rem;
-            margin: 60px 0 20px;
-            animation: fadeIn 2s ease-in;
-        }
-        h2 {
-            font-size: 2.5rem;
-            margin: 80px 0 30px;
-            font-weight: 600;
-        }
-        p, li {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin: 20px 0;
-        }
-        .heart-beat {
-            font-size: 4rem;
-            animation: beat 1.5s infinite;
-        }
-        .section {
-            margin: 120px 0;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            margin: 20px 0;
-        }
-        button {
-            background: white;
-            color: #ff5e98;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.3rem;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 30px 10px;
-            transition: transform 0.3s;
-        }
-        button:hover { transform: scale(1.1); }
+<meta charset="UTF-8">
+<title>Para Ti ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        /* Corazones cayendo */
-        .falling-hearts span {
-            position: absolute;
-            font-size: 2rem;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+
+body{
+background:linear-gradient(180deg,#ff4d6d,#0b0b0b);
+color:white;
+overflow-x:hidden;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:25px;
+text-align:center;
+}
+
+h1{font-size:2.2rem;margin-bottom:10px}
+p{max-width:500px;opacity:.9}
+
+.btn{
+background:#ff4d6d;
+border:none;
+border-radius:30px;
+padding:12px 25px;
+color:white;
+margin-top:20px;
+font-size:1rem;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,80,.5);
+margin-top:20px;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-100vh);opacity:0}
+}
+
+.chat{
+margin-top:20px;
+text-align:left;
+}
+
+.msg{
+background:#ff4d6d;
+padding:10px 15px;
+border-radius:15px;
+margin:10px 0;
+width:80%;
+}
+
+.reply{
+background:#333;
+margin-left:auto;
+}
+
+input{
+width:100%;
+padding:10px;
+border-radius:20px;
+border:none;
+margin-top:10px;
+}
+
+footer{opacity:.4;margin-top:40px}
+</style>
 </head>
+
 <body>
 
-    <!-- Corazones cayendo -->
-    <div class="falling-hearts">
-        <span style="left: 10%; animation-duration: 12s; animation-delay: 0s;">❤️</span>
-        <span style="left: 20%; animation-duration: 15s; animation-delay: 2s;">💕</span>
-        <span style="left: 30%; animation-duration: 10s; animation-delay: 1s;">❤️</span>
-        <span style="left: 40%; animation-duration: 14s; animation-delay: 5s;">💖</span>
-        <span style="left: 50%; animation-duration: 11s; animation-delay: 3s;">❤️</span>
-        <span style="left: 60%; animation-duration: 13s; animation-delay: 4s;">💕</span>
-        <span style="left: 70%; animation-duration: 16s; animation-delay: 6s;">💖</span>
-        <span style="left: 80%; animation-duration: 12s; animation-delay: 7s;">❤️</span>
-        <span style="left: 90%; animation-duration: 14s; animation-delay: 8s;">💕</span>
-    </div>
+<section>
+<h1>Hola ❤️</h1>
+<p>No sé si estabas esperando esto…  
+pero yo necesitaba hacerlo.</p>
+<button class="btn" onclick="next()">Siguiente</button>
+</section>
 
-    <div class="container">
-        <h1>Feliz Día de San Valentín, [Su Nombre]</h1>
-        <p class="heart-beat">❤️</p>
-        <p>De parte de [Tu Nombre]</p>
+<section>
+<div class="card">
+<h1>Desde Argentina hasta Ecuador</h1>
 
-        <div class="section">
-            <h2>Un mensaje para ti</h2>
-            <p>Aquí escribe tu mensaje principal. Sé sincero: dile lo que sientes, por qué te importa tanto, si quieres disculparte por algo, y que respetarás lo que ella decida.</p>
-        </div>
+<p>
+No importa la distancia…  
+importa lo que siento.
 
-        <div class="section">
-            <h2>Nuestros mejores recuerdos</h2>
-            <p>Agrega las fotos que más te gusten de momentos juntos.</p>
-            <img src="https://via.placeholder.com/600x400?text=Foto+1" alt="Recuerdo 1">
-            <img src="https://via.placeholder.com/600x400?text=Foto+2" alt="Recuerdo 2">
-            <!-- Agrega más imágenes cambiando el src -->
-        </div>
+Tal vez últimamente te alejaste,  
+pero yo aún pienso en ti.
+</p>
 
-        <div class="section">
-            <h2>Por qué eres tan especial para mí</h2>
-            <ul style="list-style: none; padding: 0; font-size: 1.4rem;">
-                <li>💕 Tu sonrisa ilumina todo</li>
-                <li>💕 [Razones personales tuyas]</li>
-                <li>💕 [Otra razón]</li>
-                <!-- Agrega todas las que quieras -->
-            </ul>
-        </div>
+<div id="timer"></div>
+</div>
 
-        <div class="section">
-            <h2>¡Haz clic y celebra!</h2>
-            <button onclick="confetti({particleCount: 150, spread: 100, origin: { y: 0.6 }, colors: ['#ff69b4','#ff1493','#ffffff']});">
-                Lanza confeti 🎉
-            </button>
-            <button onclick="confetti({particleCount: 80, scalar: 2, shapes: ['heart'], colors: ['#ff1493','#ff69b4']});">
-                Solo corazones ❤️
-            </button>
-        </div>
+<button class="btn" onclick="next()">Sigue</button>
+</section>
 
-        <div class="section">
-            <h2>Con todo mi cariño</h2>
-            <p>Espero que esto te saque una sonrisa y que podamos hablar cuando tú quieras. Te extraño.</p>
-            <p style="font-size: 1.8rem; margin-top: 50px;">Con amor,<br>[Tu Nombre]</p>
-        </div>
-    </div>
+<section>
+<div class="card">
+<h1>Una carta para ti 💌</h1>
 
-    <script>
-        // Animaciones al hacer scroll
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(sec => observer.observe(sec));
-    </script>
+<p>
+No quiero presionarte.  
+Solo quiero que sepas que me importas muchísimo.
+
+Si hoy estás cansada, triste o confundida…  
+aquí estoy.
+</p>
+
+<p style="margin-top:15px">
+No te escribo para obligarte a volver.  
+Te escribo porque es real.
+</p>
+</div>
+
+<button class="btn" onclick="next()">Abrir chat</button>
+</section>
+
+<section>
+<h1>Mini chat 💬</h1>
+
+<div class="chat" id="chat">
+<div class="msg">Hola… solo quería saber cómo estás ❤️</div>
+</div>
+
+<input placeholder="Escribe algo..." onkeydown="send(event)">
+
+<button class="btn" onclick="next()">Continuar</button>
+</section>
+
+<section>
+<div class="card">
+<h1>Elige una opción</h1>
+
+<button class="btn" onclick="answer(1)">Me caes bien</button><br>
+<button class="btn" onclick="answer(2)">Necesito tiempo</button><br>
+<button class="btn" onclick="answer(3)">También pienso en ti</button>
+
+<p id="resp" style="margin-top:20px"></p>
+</div>
+
+<button class="btn" onclick="next()">Final</button>
+</section>
+
+<section>
+<div class="card">
+<h1>Solo una cosa más…</h1>
+
+<p>
+Gracias por existir.  
+Gracias por leer hasta aquí.
+
+No importa qué pase…  
+siempre te voy a desear lo mejor.
+
+Feliz 14 de Febrero ❤️
+</p>
+
+<footer>Hecho con el corazón — Miguel</footer>
+</div>
+</section>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/10/05/audio_42e9c0b9a2.mp3">
+</audio>
+
+<script>
+function next(){
+window.scrollBy({top:innerHeight,behavior:"smooth"});
+}
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},300);
+
+const start=new Date("2026-02-01");
+
+setInterval(()=>{
+let d=Math.floor((new Date()-start)/86400000);
+document.getElementById("timer").innerHTML="Días pensando en ti: "+d;
+},1000);
+
+function send(e){
+if(e.key==="Enter"){
+let c=document.getElementById("chat");
+c.innerHTML+=`<div class="msg reply">${e.target.value}</div>`;
+e.target.value="";
+}
+}
+
+function answer(n){
+let t=document.getElementById("resp");
+if(n==1)t.innerHTML="Eso ya significa mucho para mí ❤️";
+if(n==2)t.innerHTML="Te entiendo… aquí estaré.";
+if(n==3)t.innerHTML="Eso me hace sonreír.";
+}
+</script>
+
 </body>
 </html>
